@@ -14,13 +14,9 @@ let ft_string_all f str =
     let is_digit c = c >= '0' && c <= '9'
     in
     if ft_string_all is_digit "0123456789" = true
-      then
-        print_string "True\n"
-      else
-        print_string "False\n"
+      then print_endline "True"
+      else print_endline "False"
     ;
     if ft_string_all is_digit "01234e5678r9" = true
-        then
-          print_string "True\n"
-        else
-          print_string "False\n"
+        then print_endline "True"
+        else print_endline "False"
