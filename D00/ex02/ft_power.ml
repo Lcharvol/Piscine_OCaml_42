@@ -1,5 +1,8 @@
-let ft_power nb p =
-    int_of_float((float_of_int nb) ** (float_of_int p))
+let rec ft_power nb p =
+    if p = 0
+        then 1
+    else
+        nb * (ft_power nb (p - 1))
 
 let () =
     print_int (ft_power 2 4);

@@ -5,7 +5,7 @@ let rec ft_print_comb () =
     print_int c;
     if a < 7
       then
-        begin
+          begin
           print_string ", ";
           if c < 9
             then start a b (c + 1)

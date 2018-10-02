@@ -1,15 +1,19 @@
 let rec ft_countdown nb =
     if nb <= 0 then
         begin
-            print_endline "0"
+            print_char '0';
+            print_char '\n'
         end
     else
         begin
-            print_endline (string_of_int (nb));
+            print_int nb;
+            print_char '\n';
             ft_countdown (nb - 1)
         end
 
 let () =
+    ft_countdown 23;
+    print_char '\n';
     ft_countdown 3;
     print_char '\n';
     ft_countdown 0;

@@ -10,6 +10,7 @@ let ft_print_rev str =
         print_char '\n'
   in
   ft_print_letter ((String.length str) - 1)
+
 let () =
   ft_print_rev "Hello world !";
   ft_print_rev "";
