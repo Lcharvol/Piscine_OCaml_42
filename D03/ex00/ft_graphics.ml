@@ -3,11 +3,12 @@ type 'a tree = Nil | Node of 'a * 'a tree * 'a tree
 let square_size = 50
 
 let draw_square x y size =
-  Graphics.moveto (x - (size / 2)) (y - (size / 2));
-  Graphics.lineto (x - (size / 2)) ((y - (size / 2)) + size);
-  Graphics.lineto ((x - (size / 2)) + size) ((y - (size / 2)) + size);
-  Graphics.lineto ((x - (size / 2)) + size) (y - (size / 2));
-  Graphics.lineto (x - (size / 2)) (y - (size / 2));
+  let center = size / 2 in
+  Graphics.moveto (x - center) (y - center);
+  Graphics.lineto (x - center) ((y - center) + size);
+  Graphics.lineto ((x - center) + size) ((y - center) + size);
+  Graphics.lineto ((x - center) + size) (y - center);
+  Graphics.lineto (x - center) (y - center);
   Graphics.moveto x y
 
 let draw_text x y size text =
@@ -19,13 +20,14 @@ let draw_text x y size text =
 let draw_tree_node tree =
   let rec draw_tree_node_rec tree x y = match tree with
   | Nil -> draw_text x y square_size "Nil"
-  | Node(a, b, c) ->  draw_text x y square_size a;
-                      Graphics.moveto (x + (square_size / 2)) y;
+  | Node(a, b, c) ->  let center = square_size / 2 in
+                      draw_text x y square_size a;
+                      Graphics.moveto (x + center) y;
                       Graphics.lineto (x + square_size * 2) (y - square_size);
-                      draw_tree_node_rec b (x + (square_size * 2) + (square_size / 2)) (y - (square_size));
-                      Graphics.moveto (x + (square_size / 2)) y;
+                      draw_tree_node_rec b (x + (square_size * 2) + center) (y - square_size);
+                      Graphics.moveto (x + center) y;
                       Graphics.lineto (x + square_size * 2) (y + square_size);
-                      draw_tree_node_rec b (x + (square_size * 2) + (square_size / 2)) (y + (square_size))
+                      draw_tree_node_rec b (x + (square_size * 2) + center) (y + square_size)
   in
   draw_tree_node_rec tree 250 250
 

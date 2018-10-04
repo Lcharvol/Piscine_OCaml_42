@@ -2,7 +2,8 @@
 NAME = a.aout
 
 # Sources
-SOURCES = gardening.ml
+SOURCES =	cipher.ml \
+			uncipher.ml
 DEPS = .depend
 
 # Compilateurs
@@ -50,6 +51,8 @@ $(NAME).opt:	$(OPTOBJS)
 clean:
 	rm -f *.cm[iox] *~ .*~ #*#
 	rm -f $(NAME).o
+	rm -f cipher.o
+	rm -f uncipher.o
 
 fclean: clean
 	rm -f $(NAME)

@@ -50,11 +50,13 @@ $(NAME).opt:	$(OPTOBJS)
 clean:
 	rm -f *.cm[iox] *~ .*~ #*#
 	rm -f $(NAME).o
+	rm -f ft_graphics.o
 
 fclean: clean
 	rm -f $(NAME)
 	rm -f $(NAME).opt
 	rm -f $(NAME).byt
+	rm -rf .depend
 
 depend: $(DEPS)
 $(DEPS):
