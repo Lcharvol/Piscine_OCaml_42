@@ -1,24 +1,3 @@
-let unrot42 str =
-  let isAlpha c = c >= 'a' && c <= 'z'
-  in
-  let isCapitalizedAlpha c = c >= 'A' && c <= 'Z'
-  in
-  let rotateChar c =
-    if isAlpha c
-      then
-        if (int_of_char c - 16) < 97
-          then char_of_int (122 + (int_of_char c - 16 - 96))
-          else char_of_int (int_of_char c - 16)
-      else 
-        if isCapitalizedAlpha c
-          then
-            if (int_of_char c - 16) < 65
-              then char_of_int (90 + (int_of_char c - 16 - 64))
-              else char_of_int (int_of_char c - 16)
-          else c
-  in
-  String.map rotateChar str
-
 let uncaesar n str =
   let real_rot = n mod 26
   in
@@ -41,6 +20,8 @@ let uncaesar n str =
           else c
   in
   String.map rotateChar str
+
+let unrot42 str = uncaesar 42 str
 
 let xor key str =
   if (key > 0) then

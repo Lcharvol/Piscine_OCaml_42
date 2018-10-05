@@ -1,24 +1,3 @@
-let rot42 str =
-  let isAlpha c = c >= 'a' && c <= 'z'
-  in
-  let isCapitalizedAlpha c = c >= 'A' && c <= 'Z'
-  in
-  let rotateChar c =
-    if isAlpha c
-      then
-        if (int_of_char c + 16) > 122
-          then char_of_int (97 + (int_of_char c + 16 - 123))
-          else char_of_int (int_of_char c + 16)
-      else 
-        if isCapitalizedAlpha c
-          then
-            if (int_of_char c + 16) > 90
-              then char_of_int (65 + (int_of_char c + 16 - 91))
-              else char_of_int (int_of_char c + 16)
-          else c
-  in
-  String.map rotateChar str
-
 let caesar n str =
   let real_rot = n mod 26
   in
@@ -48,6 +27,8 @@ let xor key str =
     String.map xorChar str
   else
     str
+
+let rot42 str = caesar 42 str
 
 let rec ft_crypt str l = match l with
   | f::tail -> ft_crypt (f str) tail

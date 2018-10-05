@@ -1,5 +1,7 @@
 RESULT = a.aout
-SOURCES = gardening.ml
-LIBS = graphics
+SOURCES = btree.ml
+LIBS = 
+INCDIRS =
+OCAMLLDFLAGS =
 OCAMLMAKEFILE = OCamlMakefile
 include $(OCAMLMAKEFILE)
