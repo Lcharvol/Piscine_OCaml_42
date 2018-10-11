@@ -5,7 +5,7 @@ class doctor name age people =
     val _sidekick:People.people = people 
     val mutable _hp = 100
 
-    initializer print_endline "A doctor instance has been created"
+    initializer print_endline ("Doctor " ^ _name ^ " has been summoned")
     method travel_in_time (start:int) (arrival:int) = print_endline 
     "    _______(_@_)_______
     | POLICE      BOX |

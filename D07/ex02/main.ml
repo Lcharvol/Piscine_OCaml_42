@@ -1,7 +1,7 @@
 let () =
   let dalek = new Dalek.dalek in
   let people = new People.people ("Laurent") in
-  let doctor = new Doctor.doctor ("Dr. Who") 24 people in
+  let doctor = new Doctor.doctor ("Who") 24 people in
   print_endline dalek#to_string;
   dalek#talk;
   dalek#talk;
