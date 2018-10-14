@@ -1,0 +1,16 @@
+*.cmi
+*.cmx
+*.cmo
+*._bcdi
+*.o
+*._*
+all
+._d/
+ex00/main
+ex01/main
+ex02/main
+ex03/main
+ex04/main
+test
+save.itama
+*~
