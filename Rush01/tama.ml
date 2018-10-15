@@ -6,7 +6,7 @@
 (*   By: jblondea <jblondea@student.42.fr>          +#+  +:+       +#+        *)
 (*                                                +#+#+#+#+#+   +#+           *)
 (*   Created: 2018/10/13 13:57:01 by jblondea          #+#    #+#             *)
-(*   Updated: 2018/10/14 14:02:13 by jblondea         ###   ########.fr       *)
+(*   Updated: 2018/10/14 17:35:33 by jblondea         ###   ########.fr       *)
 (*                                                                            *)
 (* ************************************************************************** *)
 
@@ -42,6 +42,8 @@ class tama =
     val _dead : bool = false
     val _lifeLength : int = 0
 
+    val _onDead = (fun () -> print_endline "on dead")
+
     method eat = print_endline @@ "eating...";
       if _dead then self else
       ({< _health = cap (_health + 25); _energy = cap (_energy - 10); _hygiene = cap (_hygiene - 20); _happiness = cap (_happiness + 5) >})#checkDeath
@@ -67,11 +69,13 @@ class tama =
 
     method get_score = _lifeLength
 
+    method set_onDead f = {< _onDead = f >}
+
     method undergoTime = print_endline @@ "undergoing 1 more sec...";
       if _dead then (print_endline " .. but already dead."; self) else
       ({< _health = cap (_health - 1); _lifeLength = (_lifeLength + 1) >})#checkDeath
 
-    method die = print_endline "dead.."; {< _dead = true >}
+    method die = print_endline "dead.."; _onDead (); {< _dead = true >}
 
     method checkDeath = if _health <= 0 || _energy <= 0 || _hygiene <= 0 || _happiness <= 0 then self#die else self
 
